@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { saveComment, fetchComments } from "./../actions/index";
 
-const CommentBox = () => {
-    return (
+const CommentBox = ({ saveComment, fetchComments }) => {
+  const [comment, setComment] = useState("");
+
+  const handleChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    saveComment(comment);
+    setComment("");
+  };
+  const handleFetchComments = () => {
+    fetchComments();
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <h4>Add a comment</h4>
+        <textarea value={comment} onChange={handleChange} />
         <div>
-            CommentBox
+          <button>Submit Comment</button>
         </div>
-    )
-}
+      </form>
+      <button className="fetch-comments" onClick={handleFetchComments}>Fecth comments</button>
+    </>
+  );
+};
 
-export default CommentBox
+export default connect(null, { saveComment, fetchComments })(CommentBox);
