@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import App from "../components/App";
-import MyProvider from "./../root";
+import MyProvider from "./../Root";
 import moxios from "moxios";
 
 beforeEach(() => {

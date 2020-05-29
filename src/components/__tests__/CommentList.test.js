@@ -1,7 +1,7 @@
 import React from "react";
 import CommentList from "../CommentList";
 import { mount } from "enzyme";
-import MyProvider from "../../root";
+import MyProvider from "../../Root";
 
 let wrapper;
 
